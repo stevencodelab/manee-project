@@ -13,34 +13,10 @@
                     '{{ asset('images/hero-1.png') }}',
                     'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop'
                 ],
-                displayedText: '',
-                fullText: 'Headline Here and<br/>Can Go Over Two Lines',
-                isTyping: true,
                 next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length },
                 prev() { this.activeSlide = (this.activeSlide - 1 + this.slides.length) % this.slides.length },
-                startTyping() {
-                    let i = 0;
-                    this.displayedText = '';
-                    let speed = 50;
-                    let type = () => {
-                        if (i < this.fullText.length) {
-                            if (this.fullText.substring(i).startsWith('<br/>')) {
-                                this.displayedText += '<br/>';
-                                i += 5;
-                            } else {
-                                this.displayedText += this.fullText.charAt(i);
-                                i++;
-                            }
-                            setTimeout(type, speed);
-                        } else {
-                            this.isTyping = false;
-                        }
-                    };
-                    setTimeout(() => type(), 500); // Delay start slightly
-                },
                 init() { 
                     setInterval(() => this.next(), 5000);
-                    this.startTyping();
                 }
              }">
         
@@ -64,7 +40,7 @@
         <div class="relative container mx-auto px-6 h-full flex flex-col justify-center text-white z-20">
             <div class="max-w-xl mt-16 md:mt-0 md:ml-12 min-h-[160px]"> <!-- Added min-height to prevent layout shift -->
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif italic font-light leading-tight mb-6">
-                    <span x-html="displayedText"></span><span x-show="isTyping" class="animate-pulse">|</span>
+                    Headline Here and<br/>Can Go Over Two Lines
                 </h1>
                 <p class="text-lg md:text-xl font-sans font-light mb-10 max-w-md opacity-90">
                     Subheadline goes here and can<br/>go over two lines

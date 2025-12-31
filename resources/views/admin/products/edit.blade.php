@@ -1,5 +1,12 @@
 @extends('layouts.admin')
 
+@php
+    $breadcrumbs = [
+        ['label' => 'Daftar Produk', 'url' => route('admin.products.index')],
+        ['label' => 'Edit Product', 'url' => null]
+    ];
+@endphp
+
 @section('title', 'Edit Product - Maneé Admin')
 
 @section('content')
